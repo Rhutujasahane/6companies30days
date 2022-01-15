@@ -1,0 +1,25 @@
+void connect(Node *root) {
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty()){
+            Node* ptr=nullptr;
+            int size=q.size();
+            while(size--){
+                auto curr=q.front();
+                q.pop();
+                if(curr->left!=nullptr){
+                    q.push(curr->left);
+                }
+                if(curr->right!=nullptr){
+                    q.push(curr->right);
+                }
+                if(ptr==nullptr){
+                    ptr=curr;
+                }
+                else{
+                    ptr->nextRight=curr;
+                    ptr=ptr->nextRight;
+                }
+            }
+        }
+} 
