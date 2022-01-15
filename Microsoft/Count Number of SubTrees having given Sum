@@ -1,0 +1,23 @@
+int helper(Node *root,int X,int &x) {
+    if(!root) return 0;
+    else if(!root->left and !root->right and root->data == X) {
+        x++;
+        return X;
+    } 
+    
+    int sum = root->data + helper(root->left,X,x) + helper(root->right,X,x);
+    
+    if(sum == X) x++;
+    
+    return sum;
+    
+}
+
+//Function to count number of subtrees having sum equal to given sum.
+int countSubtreesWithSumX(Node* root, int X)
+{
+	// Code here
+	int countNumber = 0;
+	helper(root,X,countNumber);
+	return countNumber;
+}
